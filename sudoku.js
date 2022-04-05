@@ -1,9 +1,11 @@
 // "use strict";
+
+//Function for taking input
 document.getElementById("sudoku-board").addEventListener("keyup", function(event) {
   if(event.target && event.target.nodeName == "TD") {
     var validNum = /[1-9]/;
     var tdEl = event.target;
-    if (tdEl.innerText.length > 0 && validNum.test(tdEl.innerText[0])) {
+    if (tdEl.innerText.length > 0 && validNum.test(tdEl.innerText[0])) {  // we will not take anything greater than 9
       tdEl.innerText = tdEl.innerText[0];
     } else {
       tdEl.innerText = "";
@@ -11,6 +13,10 @@ document.getElementById("sudoku-board").addEventListener("keyup", function(event
   }
 });
 
+//The test() method tests for a match in a string.
+// If it finds a match, it returns true, otherwise it returns false.
+
+//Solve button
 document.getElementById("solve-button").addEventListener("click", function(event) {
   var boardString = boardToString();
   var solution = solve(boardString);
@@ -21,8 +27,10 @@ document.getElementById("solve-button").addEventListener("click", function(event
   }
 })
 
-document.getElementById("clear-button").addEventListener("click", clearBoard);
 
+//Clear button
+document.getElementById("clear-button").addEventListener("click", clearBoard);
+//Clear individual columns
 function clearBoard() {
   var tds = document.getElementsByTagName("td");
   for (var i = 0; i < tds.length; i++) {
@@ -30,6 +38,7 @@ function clearBoard() {
   }
 }
 
+//Board to string function
 function boardToString() {
   var string = "";
   var validNum = /[1-9]/;
@@ -44,6 +53,7 @@ function boardToString() {
   return string;
 }
 
+//String to board function
 function stringToBoard(string) {
   var currentCell;
   var validNum = /[1-9]/;
