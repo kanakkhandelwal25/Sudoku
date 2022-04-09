@@ -85,7 +85,6 @@ function solveAndPrint(boardString) {
     return solvedBoard;
 }
 
-  // PRIVATE FUNCTIONS
 function recursiveSolve(boardString) {
     var boardArray = boardString.split("");
     if (boardIsSolved(boardArray)) {
