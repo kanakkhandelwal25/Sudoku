@@ -153,8 +153,8 @@ function getNextCellAndPossibilities(boardArray) {
   function allColumnsValid(boardArray) {
     return [0, 1, 2, 3, 4, 5, 6, 7, 8].map(function (i) {
       return getColumn(boardArray, i);
-    }).reduce(function (validity, row) {
-      return collectionIsValid(row) && validity;
+    }).reduce(function (validity, col) {
+      return collectionIsValid(col) && validity;
     }, true);
   }
 
@@ -168,8 +168,8 @@ function getNextCellAndPossibilities(boardArray) {
   function allBoxesValid(boardArray) {
     return [0, 3, 6, 27, 30, 33, 54, 57, 60].map(function (i) {
       return getBox(boardArray, i);
-    }).reduce(function (validity, row) {
-      return collectionIsValid(row) && validity;
+    }).reduce(function (validity, box) {
+      return collectionIsValid(box) && validity;
     }, true);
   }
 
@@ -183,7 +183,7 @@ function getNextCellAndPossibilities(boardArray) {
   }
 
   function collectionIsValid(collection) {
-    var numCounts = {};
+    var numCounts = [];
     for(var i = 0; i < collection.length; i++) {
       if (collection[i] != "-") {
         if (numCounts[collection[i]] === undefined) {
