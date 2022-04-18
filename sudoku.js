@@ -67,10 +67,6 @@ function stringToBoard(string) {
   }
 }
 
-var EASY_PUZZLE = "1-58-2----9--764-52--4--819-19--73-6762-83-9-----61-5---76---3-43--2-5-16--3-89--";
-var MEDIUM_PUZZLE = "-3-5--8-45-42---1---8--9---79-8-61-3-----54---5------78-----7-2---7-46--61-3--5--";
-var HARD_PUZZLE = "8----------36------7--9-2---5---7-------457-----1---3---1----68--85---1--9----4--";
-
 function solve(boardString) {
     var boardArray = boardString.split("");
     if (boardIsInvalid(boardArray)) {
@@ -120,12 +116,14 @@ function boardIsSolved(boardArray) {
     return true;
 }
 
+//he indexOf() method returns the position of the first occurrence of a value in a string.The indexOf() method returns -1 if the value is not found.
+
 function getNextCellAndPossibilities(boardArray) {
     for (var i = 0; i < boardArray.length; i++) {
       if (boardArray[i] === "-") {
         var existingValues = getAllIntersections(boardArray, i);
         var choices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"].filter(function (num) {
-          return existingValues.indexOf(num) < 0;
+          return existingValues.indexOf(num) < 0;        
         });
         return { index: i, choices: choices };
       }
